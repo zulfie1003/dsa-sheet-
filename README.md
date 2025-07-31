@@ -79,7 +79,7 @@ Coming soon...
 
 **Zulfiquar**
 
-* GitHub: [@your-username](https://github.com/zulfie1003)
+* GitHub: [@username](https://github.com/zulfie1003)
 * Feel free to fork & modify for your own practice tracking!
 
 ---
