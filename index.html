@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zulfiquar's A2Z DSA Sheet</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">DSA Sheet</div>
+      <nav id="topic-nav"></nav>
+    </aside>
+    <div style="flex:1;">
+      <!-- Move progress bar here -->
+      <div id="overall-progress" class="progress-bar" style="margin:32px 32px 0 32px;">
+        <div class="progress-bar-inner" style="width:0%"></div>
+        <span class="progress-label">0% Completed</span>
+      </div>
+      <main class="main-content">
+        <header>
+          <h1>Zulfiquar's A2Z DSA Sheet</h1>
+          <p class="subtitle" id="total-questions-header"></p>
+          <input type="text" id="search-bar" placeholder="Search by problem or topic..." />
+        </header>
+        <section id="topics-list"></section>
+      </main>
+    </div>
+  </div>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
