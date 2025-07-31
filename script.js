@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchBar = document.getElementById("search-bar");
   let currentTopicIdx = 0;
 
-  // Render sidebar navigation
+
   function renderSidebar() {
     topicNav.innerHTML = "";
     dsaSheet.forEach((topic, idx) => {
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Get progress for a specific topic
+
   function getTopicProgress(topic) {
     const total = topic.questions.length;
     const done = topic.questions.filter((q, i) => {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return { total, done, percent: total ? Math.round((done / total) * 100) : 0 };
   }
 
-  // Render topic questions
+
   function renderTopic(idx, filter = "") {
     const topic = dsaSheet[idx];
     let questions = topic.questions;
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateProgress();
     updateTopicProgressBar(topic, idx);
 
-    // Select/Deselect All logic
+
     const toggleBtn = document.getElementById("toggle-all-btn");
     toggleBtn.onclick = function () {
       const checkboxes = document.querySelectorAll(`.checkbox-solved[data-topic="${topic.topic}"]`);
@@ -79,16 +79,16 @@ document.addEventListener("DOMContentLoaded", function () {
       checkboxes.forEach(cb => cb.checked = !allChecked);
       updateProgress();
       updateTopicProgressBar(topic, idx);
-      // Change button text
+
       toggleBtn.textContent = allChecked ? "Select All" : "Deselect All";
     };
-    // Set button text initially
+
     const checkboxes = document.querySelectorAll(`.checkbox-solved[data-topic="${topic.topic}"]`);
     const allChecked = Array.from(checkboxes).every(cb => cb.checked);
     toggleBtn.textContent = allChecked ? "Deselect All" : "Select All";
   }
 
-  // Update overall progress bar
+
   function updateProgress() {
     const total = dsaSheet.reduce((sum, t) => sum + t.questions.length, 0);
     const done = document.querySelectorAll('.checkbox-solved:checked').length;
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Update topic progress bar after checking/unchecking
+
   function updateTopicProgressBar(topic, idx) {
     const total = topic.questions.length;
     const done = topic.questions.filter((q, i) => {
@@ -117,14 +117,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Update total questions header
+
   function updateTotalQuestionsHeader() {
     const total = dsaSheet.reduce((sum, t) => sum + t.questions.length, 0);
     document.getElementById('total-questions-header').textContent =
       `Total Questions: ${total}`;
   }
 
-  // Listen for checkbox changes to update progress bars
+
   topicsList.addEventListener('change', function (e) {
     if (e.target.classList.contains('checkbox-solved')) {
       updateProgress();
@@ -133,12 +133,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Search bar logic
+
   searchBar.addEventListener("input", function () {
     renderTopic(currentTopicIdx, this.value.trim().toLowerCase());
   });
 
-  // Initial render
+
   renderSidebar();
   renderTopic(0);
   updateProgress();
